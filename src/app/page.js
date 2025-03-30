@@ -3,10 +3,6 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Services from "@/components/Services";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 
 // Dynamically import non-critical components
 const DynamicServices = dynamic(() => import("@/components/Services"), {
@@ -44,7 +40,6 @@ export default function Home() {
       <DynamicServices />
       <DynamicProjects />
       <DynamicContact />
-      <Footer />
     </main>
   );
 }
