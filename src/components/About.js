@@ -87,14 +87,20 @@ export default function About() {
             <div className="bg-card-bg rounded-3xl p-8 relative z-10">
               <div className="flex flex-col items-center">
                 {/* Profile Image */}
-                <div className="relative w-48 h-48 rounded-full overflow-hidden mb-6 ring-4 ring-primary/20">
-                  <Image
-                    src="/avatar.jpg"
-                    alt="Awais Ahmad"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                <div className="relative">
+                  <div className="w-48 h-48 mx-auto mb-8 relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-xl" />
+                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20">
+                      <Image
+                        src="/avatar.jpg"
+                        alt="Awais Ahmad Mirza"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Name and Title */}

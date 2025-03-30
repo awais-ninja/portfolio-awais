@@ -41,7 +41,7 @@ export default function Hero() {
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 animate-gradient" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 transform-gpu animate-gradient" />
 
         {/* Animated elements */}
         <div className="absolute inset-0">
