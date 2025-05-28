@@ -1,8 +1,12 @@
+"use client";
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
 import Script from "next/script";
+import { useEffect } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,7 +14,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata = {
+/* export const metadata = {
   title: "Awais Ahmad Mirza - Portfolio",
   description:
     "Professional portfolio of Awais Ahmad Mirza, showcasing web development and digital marketing projects.",
@@ -50,9 +54,15 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-};
+}; */
 
 export default function RootLayout({ children }) {
+  useEffect(() => {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }, []);
+
   return (
     <html lang="en" className={inter.variable}>
       <head>
@@ -68,11 +78,16 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#000000" />
         <link rel="canonical" href="https://portfolio-awais-peach.vercel.app" />
       </head>
-      <body className="bg-bg text-text">
+      <body className="bg-background text-text">
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />
+        </div>
+
+        {/* Theme Toggle */}
+        <div className="fixed bottom-4 right-4 z-50">
+          <ThemeToggle />
         </div>
 
         {/* Service Worker Registration */}

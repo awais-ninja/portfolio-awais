@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import CustomLink from "./CustomLink";
 import {
   FaEnvelope,
   FaPhone,
@@ -12,11 +13,11 @@ import {
 } from "react-icons/fa";
 
 const footerLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: " #services", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
 ];
 
 const contactInfo = [
@@ -65,10 +66,18 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-card-bg py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold text-text mb-4">
@@ -85,12 +94,13 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <CustomLink
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-text-secondary hover:text-primary transition-colors duration-300"
                   >
                     {link.label}
-                  </Link>
+                  </CustomLink>
                 </li>
               ))}
             </ul>
@@ -104,15 +114,14 @@ export default function Footer() {
                 const Icon = contact.icon;
                 return (
                   <li key={contact.name}>
-                    <a
+                    <CustomLink
                       href={contact.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 text-text-secondary ${contact.color} transition-colors duration-300`}
+                      newTab={true}
+                      className={`flex items-center justify-center md:justify-start space-x-2 text-text-secondary ${contact.color} transition-colors duration-300`}
                     >
                       <Icon className="w-4 h-4" />
                       <span>{contact.value}</span>
-                    </a>
+                    </CustomLink>
                   </li>
                 );
               })}
@@ -122,22 +131,24 @@ export default function Footer() {
           {/* Social Links */}
           <div>
             <h3 className="text-lg font-bold text-text mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
+            <div className="flex justify-center md:justify-start space-x-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <motion.a
+                  <motion.div
                     key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-10 h-10 rounded-full bg-background flex items-center justify-center text-text-secondary ${social.color} transition-colors duration-300`}
-                    title={social.name}
                   >
-                    <Icon className="w-5 h-5" />
-                  </motion.a>
+                    <CustomLink
+                      href={social.url}
+                      newTab={true}
+                      className={`w-10 h-10 rounded-full bg-background flex items-center justify-center text-text-secondary ${social.color} transition-colors duration-300`}
+                      title={social.name}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </CustomLink>
+                  </motion.div>
                 );
               })}
             </div>
@@ -145,10 +156,19 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-white/10 text-center text-text-secondary">
+        <div className="mt-12 text-center text-text-secondary">
           <p>
-            &copy; {new Date().getFullYear()} Awais Ahmad Mirza. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Awais Ahmad. All rights reserved.
+          </p>
+          <p>
+            Made with ❤️ by{" "}
+            <CustomLink
+              href="https://www.awaisdigitalservices.co.uk/"
+              newTab={true}
+              className="text-primary hover:text-primary/80 transition-colors duration-300"
+            >
+              ADS
+            </CustomLink>
           </p>
         </div>
       </div>

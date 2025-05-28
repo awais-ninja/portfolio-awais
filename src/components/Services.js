@@ -9,12 +9,6 @@ import {
   FaEnvelope,
   FaVideo,
   FaTrademark,
-  FaPencilRuler,
-  FaSearch,
-  FaInstagram,
-  FaFileAlt,
-  FaAd,
-  FaMobileAlt,
   FaEnvelopeOpenText,
   FaCog,
   FaListAlt,
@@ -314,7 +308,7 @@ export default function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text relative inline-block">
-            Our Services
+            My Skills
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
@@ -325,41 +319,13 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <AnimatePresence>
             {services.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} />
             ))}
           </AnimatePresence>
         </div>
-
-        {/* View All Services Button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-center mt-12"
-        >
-          <Link
-            href="/services"
-            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium transition-colors duration-300"
-          >
-            <span>View All Services</span>
-            <svg
-              className="w-5 h-5 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

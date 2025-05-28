@@ -52,7 +52,7 @@ const skills = [
 
 export default function About() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden" id="about">
       <div className="container max-w-6xl mx-auto px-4">
         {/* Main Heading */}
         <motion.div

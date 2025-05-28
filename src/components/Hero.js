@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
+import CustomLink from "./CustomLink";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -36,8 +37,19 @@ const rotateAnimation = {
 };
 
 export default function Hero() {
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
+    <section
+      className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden"
+      id="home"
+    >
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         {/* Gradient overlay */}
@@ -172,18 +184,20 @@ export default function Hero() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link
-              href="/contact"
+            <CustomLink
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
               className="btn btn-accent hover:scale-105 transition-transform"
             >
               Hire Me
-            </Link>
-            <Link
-              href="/inquiry"
+            </CustomLink>
+            <CustomLink
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
               className="btn btn-primary hover:scale-105 transition-transform"
             >
               Make an Inquiry
-            </Link>
+            </CustomLink>
           </motion.div>
         </motion.div>
       </div>

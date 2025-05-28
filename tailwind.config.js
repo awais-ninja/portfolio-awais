@@ -8,17 +8,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        primary: "var(--primary)",
-        accent: "var(--accent)",
-        text: "var(--text)",
-        "text-secondary": "var(--text-secondary)",
-        "card-bg": "var(--card-bg)",
-        border: "var(--border)",
+        background: {
+          DEFAULT: "var(--color-background)",
+        },
+        primary: {
+          DEFAULT: "var(--color-primary)",
+          90: "color-mix(in srgb, var(--color-primary) 90%, transparent)",
+        },
+        accent: {
+          DEFAULT: "var(--color-accent)",
+        },
+        text: {
+          DEFAULT: "var(--color-text)",
+          secondary: "var(--color-text-secondary)",
+        },
+        "card-bg": {
+          DEFAULT: "var(--color-card-bg)",
+        },
+        border: {
+          DEFAULT: "var(--color-border)",
+        },
       },
       fontFamily: {
-        sans: ["Roboto", "sans-serif"],
-        galdien: ["Galdien", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        display: ["Galdien", "serif"],
+        galdien: ["Galdien", "serif"],
       },
     },
   },
